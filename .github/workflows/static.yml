@@ -40,16 +40,18 @@ jobs:
 
       - name: Install Graphviz
         run: sudo apt install graphviz
+
+        # Create documentation
+        -name: Create documentation
+        run: doxygen Doxyfile -Werror
         
-      # Create documentation   
-      - name: Create documentation     
-        run: doxygen
-        
-      - name: Upload artifact
+        -name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           # Upload entire repository
-          path: './html/'
-      - name: Deploy to GitHub Pages
+            path: 'build/html/'
+          -name: Deploy to GitHub Pages
+
         id: deployment
         uses: actions/deploy-pages@v5
+
