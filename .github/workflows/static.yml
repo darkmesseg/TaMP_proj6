@@ -23,23 +23,24 @@ concurrency:
 
 jobs:
   # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       # Install Doxygen
       - name: Install Doxygen
-        run: sudo apt install doxygen && doxygen --version
+        run: |
+          sudo apt update
+          sudo apt install -y doxygen
+          doxygen --version
 
       - name: Install Graphviz
-        run: sudo apt install graphviz
+        run: sudo apt install -y graphviz
 
         # Create documentation
       - name: Create documentation
