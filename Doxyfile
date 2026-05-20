@@ -1,0 +1,43 @@
+# Doxyfile для проекта TaMP_proj6
+
+# --- Основные настройки проекта ---
+PROJECT_NAME           = "TaMP_proj6"
+PROJECT_BRIEF          = "Стеганография и криптография"
+OUTPUT_DIRECTORY       = build
+
+# --- Откуда брать исходный код ---
+INPUT                  = ./
+RECURSIVE              = YES
+
+# --- Настройки форматов ---
+FILE_PATTERNS          = *.cpp *.h *.hpp *.md
+
+# --- Настройки вывода ---
+GENERATE_HTML          = YES
+GENERATE_LATEX         = NO
+
+# --- Дополнительные настройки для удобства ---
+GENERATE_TREEVIEW      = YES
+DISABLE_INDEX          = NO
+FULL_SIDEBAR           = YES
+USE_MDFILE_AS_MAINPAGE = README.md
+
+# --- Настройки внешнего вида ---
+HTML_EXTRA_STYLESHEET  = doxygen-awesome.css
+HTML_COLORSTYLE_HUE    = 220
+HTML_COLORSTYLE_SAT    = 100
+HTML_COLORSTYLE_GAMMA  = 80
+
+# --- Настройки извлечения информации ---
+EXTRACT_ALL            = NO
+EXTRACT_PRIVATE        = NO
+EXTRACT_STATIC         = NO
+
+# --- Настройки для диаграмм (Graphviz) ---
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+DOT_GRAPH_MAX_NODES    = 100
+CLASS_DIAGRAM          = YES
+COLLABORATION_GRAPH    = YES
+UML_LOOK               = YES
