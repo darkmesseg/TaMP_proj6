@@ -42,15 +42,15 @@ jobs:
         run: sudo apt install graphviz
 
         # Create documentation
-        -name: Create documentation
+      - name: Create documentation
         run: doxygen Doxyfile -Werror
         
-        -name: Upload artifact
+      - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           # Upload entire repository
             path: 'build/html/'
-          -name: Deploy to GitHub Pages
+      - name: Deploy to GitHub Pages
 
         id: deployment
         uses: actions/deploy-pages@v5
