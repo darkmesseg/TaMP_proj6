@@ -3,7 +3,7 @@
 # --- Основные настройки проекта ---
 PROJECT_NAME           = "TaMP_proj6"
 PROJECT_BRIEF          = "Стеганография и криптография"
-OUTPUT_DIRECTORY       = docs
+OUTPUT_DIRECTORY       = build
 # --- Откуда брать исходный код ---
 INPUT                  = ./
 RECURSIVE              = YES
