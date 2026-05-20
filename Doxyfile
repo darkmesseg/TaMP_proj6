@@ -15,7 +15,7 @@ GENERATE_LATEX         = NO
 # --- Дополнительные настройки для удобства ---
 GENERATE_TREEVIEW      = YES
 DISABLE_INDEX          = NO
-FULL_SIDEBAR           = NO
+FULL_SIDEBAR           = YES
 HTML_EXTRA_STYLESHEET  =
 EXTRACT_ALL            = YES
 EXTRACT_PRIVATE        = YES
@@ -24,5 +24,13 @@ HTML_EXTRA_STYLESHEET  = doxygen-awesome.css
 HTML_COLORSTYLE_HUE    = 220
 HTML_COLORSTYLE_SAT    = 100
 #TML_COLORSTYLE_GAMMA  = 80
+
+HAVE_DOT               = YES
+DOT_IMAGE_FORMAT       = svg
+INTERACTIVE_SVG        = YES
+DOT_GRAPH_MAX_NODES    = 100
+CLASS_DIAGRAM          = YES
+COLLABORATION_GRAPH    = YES
+UML_LOOK               = YES
 # --- Настройки для Markdown ---
 USE_MDFILE_AS_MAINPAGE = README.md
