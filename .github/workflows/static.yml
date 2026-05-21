@@ -52,7 +52,7 @@ jobs:
         
       - name: Configure Doxyfile
         run: |
-           cd ./config
+           cd ./TaMP_proj6-docs
            # Check if the INPUT line exists in Doxyfile
            if grep -q "^INPUT\s*=" Doxyfile; then
               # If it exists, replace it with "INPUT = ../TaMP_proj6-main"
