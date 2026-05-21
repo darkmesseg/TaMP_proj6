@@ -8,9 +8,10 @@ OUTPUT_DIRECTORY       = build
 # --- Откуда брать исходный код ---
 INPUT                  = ./
 RECURSIVE              = YES
+EXCLUDE                = .git/ build/ docs/ .github/
 
 # --- Настройки форматов ---
-FILE_PATTERNS          = *.cpp *.h *.hpp *.md
+FILE_PATTERNS          = *.cpp *.h *.hpp *.cc *.cxx *.md
 
 # --- Настройки вывода ---
 GENERATE_HTML          = YES
