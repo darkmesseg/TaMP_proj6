@@ -30,13 +30,13 @@ jobs:
       - name: Checkout config (docs branch)
         uses: actions/checkout@v5
         with:
-          path: ./config
+          path: ./TaMP_proj6-docs
 
       - name: Checkout source code (main branch)
         uses: actions/checkout@v5
         with:
           ref: main
-          path: ./source
+          path: ./TaMP_proj6-main
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -55,11 +55,11 @@ jobs:
            cd ./config
            # Check if the INPUT line exists in Doxyfile
            if grep -q "^INPUT\s*=" Doxyfile; then
-              # If it exists, replace it with "INPUT = ../source"
-              sed -i 's|^INPUT\s*=.*|INPUT = ../source|' Doxyfile
+              # If it exists, replace it with "INPUT = ../TaMP_proj6-main"
+              sed -i 's|^INPUT\s*=.*|INPUT = ../TaMP_proj6-main|' Doxyfile
            else
               # If not, append the line to the file
-              echo "INPUT = ../source" >> Doxyfile
+              echo "INPUT = ../TaMP_proj6-main" >> Doxyfile
            fi
 
            # Similarly for RECURSIVE
@@ -76,7 +76,7 @@ jobs:
         # Create documentation
       - name: Create documentation
         run: |
-           cd ./config
+           cd ./TaMP_proj6-docs
            doxygen Doxyfile -Werror
         
       - name: Upload artifact
