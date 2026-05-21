@@ -1,10 +1,11 @@
 # Simple workflow for deploying static content to GitHub Pages
 name: Deploy static content to Pages
 
+   
 on:
   # Runs on pushes targeting the default branch
   push:
-    branches: ["main"]
+    branches: ["docs"]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -26,9 +27,17 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout config (docs branch)
         uses: actions/checkout@v5
-        
+        with:
+          path: ./TaMP_proj6-docs
+
+      - name: Checkout source code (main branch)
+        uses: actions/checkout@v5
+        with:
+          ref: main
+          path: ./TaMP_proj6-main
+      
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -38,21 +47,45 @@ jobs:
           sudo apt update
           sudo apt install -y doxygen
           doxygen --version
-
       - name: Install Graphviz
         run: sudo apt install -y graphviz
+        
+      - name: Configure Doxyfile
+        run: |
+           cd ./TaMP_proj6-docs
+           # Check if the INPUT line exists in Doxyfile
+           if grep -q "^INPUT\s*=" Doxyfile; then
+              # If it exists, replace it with "INPUT = ../TaMP_proj6-main"
+              sed -i 's|^INPUT\s*=.*|INPUT = ../TaMP_proj6-main|' Doxyfile
+           else
+              # If not, append the line to the file
+              echo "INPUT = ../TaMP_proj6-main" >> Doxyfile
+           fi
 
+           # Similarly for RECURSIVE
+           if grep -q "^RECURSIVE\s*=" Doxyfile; then
+              sed -i 's|^RECURSIVE\s*=.*|RECURSIVE = YES|' Doxyfile
+           else
+              echo "RECURSIVE = YES" >> Doxyfile
+           fi
+
+           # Print these three parameters for verification (CI logs)
+           echo "Doxyfile prepared:"
+           cat Doxyfile | grep -E "^(INPUT|RECURSIVE|OUTPUT_DIRECTORY)"
+        
         # Create documentation
       - name: Create documentation
-        run: doxygen Doxyfile -Werror
+        run: |
+           cd ./TaMP_proj6-docs
+           doxygen Doxyfile -Werror
         
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v4
         with:
           # Upload entire repository
             path: 'build/html/'
+            
       - name: Deploy to GitHub Pages
-
         id: deployment
         uses: actions/deploy-pages@v5
 

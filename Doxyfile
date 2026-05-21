@@ -6,11 +6,12 @@ PROJECT_BRIEF          = "Стеганография и криптография
 OUTPUT_DIRECTORY       = build
 
 # --- Откуда брать исходный код ---
-INPUT                  = ./
+INPUT                  = ../TaMP_proj6-main/
 RECURSIVE              = YES
+EXCLUDE                = .git/ build/ docs/ .github/
 
 # --- Настройки форматов ---
-FILE_PATTERNS          = *.cpp *.h *.hpp *.md
+FILE_PATTERNS          = *.cpp *.h *.hpp *.cc *.cxx *.md
 
 # --- Настройки вывода ---
 GENERATE_HTML          = YES
@@ -38,6 +39,6 @@ HAVE_DOT               = YES
 DOT_IMAGE_FORMAT       = svg
 INTERACTIVE_SVG        = YES
 DOT_GRAPH_MAX_NODES    = 100
-CLASS_DIAGRAM          = YES
+UML_LOOK          = YES
 COLLABORATION_GRAPH    = YES
 UML_LOOK               = YES
